@@ -1,0 +1,63 @@
+
+@keyframes switch-on {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes switch-off {
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+
+    line-height: 20px;
+    vertical-align: middle;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+}
+
+.switch .switch-knob {
+    position: absolute;
+    border-radius: 50% 50%;
+    cursor: pointer;
+    transform: scale(1);
+    transition: left 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+    animation-duration: 0.3s;
+    animation-name: switch-off;
+}
+
+.switch .switch-knob:hover{
+    transform: scale(1.05);
+    animation-name: switch-on;
+}
+
+.checked {
+    background-color: #87d068;
+}
+
+.disabled {
+    cursor: no-drop;
+    animation-name: none;
+}
+
+.disabled .switch-knob {
+    cursor: no-drop;
+    transform: scale(1.0);
+}
